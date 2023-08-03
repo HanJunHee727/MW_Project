@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     
-    <!-- iBatis -->
+    <!-- iBatis
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     	<property name="locations" value="classpath:config/dbconn.properties" />
     </bean>
@@ -17,8 +17,14 @@
     	<property name="url" value="${jdbc.url}" />
     	<property name="username" value="${jdbc.username}" />
     	<property name="password" value="${jdbc.password}" />
-    </bean>
-    
+    </bean>-->
+
+	<!-- JNDI DataSource -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="your/jndi/datasource/name" />
+	</bean>
+
+
    	<bean id="sqlMapClient"
    		class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
    		<property name="dataSource" ref="dataSource" />
